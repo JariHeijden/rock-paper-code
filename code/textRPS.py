@@ -1,14 +1,14 @@
 #random for the AI, sys for closing when errors happen, time to delay certain things
+
 def defTextRpsJhei():
     import random, sys, time
-
-    rpsTupleJhei = ("Rock", "Paper", "Scissors")       #tuple for the AI to pick from
-    strAiPickJhei = ""                                 #string so the AI can remember it's pick
-    intRoundAmountJhei = 0                             #round amount so you can play multiple rounds
-    intUserPointsJhei = 0                              #user score to keep track of how many points are awarded
-    intAiPointsJhei = 0                                #ai score to keep track of how many points are awarded
-    strUserPickJhei = ""
-    xValidGestureJhei = False
+    rpsTupleJhei = ("Rock", "Paper", "Scissors")        #tuple for the AI to pick from
+    strAiPickJhei = ""                                  #string so the AI can remember it's pick
+    intRoundAmountJhei = 0                              #round amount so you can play multiple rounds
+    intUserPointsJhei = 0                               #user score to keep track of how many points are awarded
+    intAiPointsJhei = 0                                 #ai score to keep track of how many points are awarded
+    strUserPickJhei = ""                                #the string that will be used to keep track of the choicen gesture
+    xValidGestureJhei = False                           #to check if there has been given a valid gesture
 
     #introduction of the program
     print("Rock Paper Code", "This project was made by Jari van der Heijden, Thijs van Kessel and Amin Khachiche", "We made this project so we can play rock paper scissors with a camera", sep="\n")
@@ -23,8 +23,8 @@ def defTextRpsJhei():
             print("Please enter a number between 1-5")
 
     while intRoundAmountJhei > intUserPointsJhei and intRoundAmountJhei > intAiPointsJhei:  #this will make sure the rock paper scissors keeps repeating for the amount of rounds selected
-        while xValidGestureJhei == False:                                  #checks if there is valid input for comparing else repeat
-            strUserPickJhei = input("Pick: Rock, paper or scissors?\n")    #this input will be used for picking a gesture
+        while xValidGestureJhei == False:                                                   #checks if there is valid input for comparing else repeat
+            strUserPickJhei = input("Pick: Rock, paper or scissors?\n")                     #this input will be used for picking a gesture
             #this is a spell check if the input is close to valid and then turns it into something we can surrely use
             if "ro" in strUserPickJhei.lower():
                 strUserPickJhei = "Rock"
@@ -75,6 +75,7 @@ def defTextRpsJhei():
         time.sleep(0.5)
         xValidGestureJhei = False
         #stops here
+        
 
     time.sleep(0.5)
     #this part is to see who won in total
