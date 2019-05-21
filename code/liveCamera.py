@@ -2,8 +2,6 @@ from textRPS import *
 import numpy as np
 import cv2
 
-
-
 def defLiveTestJhei(intUserPointsJhei, intAiPointsJhei, strWinLossTextJhei):
 
     counterPlayer = str(intUserPointsJhei)
