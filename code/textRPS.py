@@ -1,4 +1,5 @@
 #random for the AI, sys for closing when errors happen, time to delay certain things
+from liveCamera import defLiveTestJhei
 
 def defTextRpsJhei():
     import random, sys, time
@@ -9,6 +10,8 @@ def defTextRpsJhei():
     intAiPointsJhei = 0                                 #ai score to keep track of how many points are awarded
     strUserPickJhei = ""                                #the string that will be used to keep track of the choicen gesture
     xValidGestureJhei = False                           #to check if there has been given a valid gesture
+    strWinLossTextJhei = ""                             #string for camera overlay
+    
 
     #introduction of the program
     print("Rock Paper Code", "This project was made by Jari van der Heijden, Thijs van Kessel and Amin Khachiche", "We made this project so we can play rock paper scissors with a camera", sep="\n")
@@ -79,7 +82,9 @@ def defTextRpsJhei():
 
     time.sleep(0.5)
     #this part is to see who won in total
-    if intUserPointsJhei < intAiPointsJhei: 
-        print("The ai reached ", intRoundAmountJhei, "first..\nYou lost")
+    if intUserPointsJhei > intAiPointsJhei: 
+        strWinLossTextJhei = "You win this game! good job!"
+        defLiveTestJhei(intUserPointsJhei, intAiPointsJhei, strWinLossTextJhei)
     else:
-        print("You reached ", intRoundAmountJhei, "first!\nYou won")
+        strWinLossTextJhei = "ohhh you lost..that's a shame"
+        defLiveTestJhei(intUserPointsJhei, intAiPointsJhei, strWinLossTextJhei)
