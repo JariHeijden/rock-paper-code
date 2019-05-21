@@ -1,6 +1,7 @@
 #random for the AI, sys for closing when errors happen, time to delay certain things
 from liveCamera import defLiveTestJhei
 
+#test
 def defTextRpsJhei():
     import random, sys, time
     rpsTupleJhei = ("Rock", "Paper", "Scissors")        #tuple for the AI to pick from
