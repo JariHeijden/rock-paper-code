@@ -1,32 +1,27 @@
-from textRPS import *
 import numpy as np
 import cv2
 
-#test
-def defLiveTestJhei(intUserPointsJhei, intAiPointsJhei, strWinLossTextJhei):
+def defLiveOverlayAkha(intUserPointsJhei, intAiPointsJhei, strWinLossTextJhei):
 
-    counterPlayer = str(intUserPointsJhei)
-    counterAI = str(intAiPointsJhei)
-    text = strWinLossTextJhei
+    strCounterPlayerAkha = str(intUserPointsJhei)               #this will convert the points of the user to a string for later diplay
+    strCounterAIAkha = str(intAiPointsJhei)                     #converts ai points for later display            
 
-    cap = cv2.VideoCapture(0)
+    videoCapAkha = cv2.VideoCapture(1)                          #so it knows to use either an internal or an external camera
 
     while(True):
-        # Capture frame-by-frame
-        ret, RPS = cap.read()
+        ret, frameRPSAkha = videoCapAkha.read(1)                 #captures the footage
 
-        # Our operations on the frame come here
-                                        #x   #y            
-        cv2.putText(RPS, counterPlayer, (50, 110), cv2.FONT_HERSHEY_DUPLEX, 2, (0, 0, 255))
-        cv2.putText(RPS, counterAI, (525, 110), cv2.FONT_HERSHEY_DUPLEX, 2, (0, 0, 255))
-        cv2.putText(RPS, text, (10, 400), cv2.FONT_HERSHEY_DUPLEX, 1.10, (0, 0, 255))
-    
-        # Display the resulting frame
-        cv2.imshow('RPS',RPS)
+        flipImgAkha = cv2.flip(frameRPSAkha,1)
+        
+        cv2.putText(flipImgAkha, strCounterPlayerAkha, (50, 110), cv2.FONT_HERSHEY_DUPLEX, 2, (0, 0, 255))             #the text overlay
+        cv2.putText(flipImgAkha, strCounterAIAkha, (525, 110), cv2.FONT_HERSHEY_DUPLEX, 2, (0, 0, 255))                #the text overlay
+        cv2.putText(flipImgAkha, strWinLossTextJhei, (10, 400), cv2.FONT_HERSHEY_DUPLEX, 1.10, (0, 0, 255))            #the text overlay
 
-        if cv2.waitKey(20) & 0xFF == ord(' '):
+        cv2.imshow('Rock-Paper-Code',flipImgAkha)              #displays the video feed with the text overlay
+
+        if cv2.waitKey(20) & 0xFF == ord(' '):                  #when space is pressed the program knows to stop
             break
 
-    # When everything done, release the capture
-    cap.release()
+    # When everything done, stop filming and close windows
+    videoCapAkha.release()
     cv2.destroyAllWindows()
