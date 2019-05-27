@@ -1,7 +1,7 @@
-import winsound
-# Play Windows exit sound.
-winsound.PlaySound("SystemHand", winsound.SND_ALIAS)
+from playsound import playsound
 
-# Probably play Windows default sound, if any is registered (because
-# "*" probably isn't the registered name of any sound).
-winsound.PlaySound("SystemAsterisk", winsound.SND_ALIAS)
+
+playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Point.wav')
+playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Wrong.wav')
+playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/LoseGame.wav')
+playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/WinGame.wav')
