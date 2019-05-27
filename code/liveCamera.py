@@ -6,7 +6,7 @@ def defLiveOverlayAkha(intUserPointsJhei, intAiPointsJhei, strWinLossTextJhei):
     strCounterPlayerAkha = str(intUserPointsJhei)               #this will convert the points of the user to a string for later diplay
     strCounterAIAkha = str(intAiPointsJhei)                     #converts ai points for later display            
 
-    videoCapAkha = cv2.VideoCapture(1)                          #so it knows to use either an internal or an external camera
+    videoCapAkha = cv2.VideoCapture(0)                          #so it knows to use either an internal or an external camera
 
     while(True):
         ret, frameRPSAkha = videoCapAkha.read(1)                 #captures the footage
