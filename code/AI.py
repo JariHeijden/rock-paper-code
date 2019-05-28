@@ -1,5 +1,5 @@
 import time, random
-from playsound import playsound
+#from playsound import playsound
 strAiPickJhei = ""                                  #string so the AI can remember it's pick
 tupleRPSJhei = ("Rock", "Paper", "Scissors")        #tuple for the AI to pick from
 listWinTieLostTkes = ["win", "tie", "loss"]
@@ -22,31 +22,31 @@ def defMeduimAIJhei(listComparingValsJhei):
     if strAiPickJhei == "Rock":
         if strUserPickJhei == "Paper":
             print("You covered his rock using paper!\nYou won!")
-            playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Point.wav')
+            #playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Point.wav')
             intUserPointsJhei = intUserPointsJhei + 1
         elif strUserPickJhei == "Scissors":
             print("Your scissors got destroyed with a rock...\nYou lost")
-            playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Wrong.wav')
+            #playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Wrong.wav')
             intAiPointsJhei = intAiPointsJhei + 1
         #code for Paper
     if strAiPickJhei == "Paper":
         if strUserPickJhei == "Scissors":
             print("You've cut his paper right in half!\nYou won!")
-            playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Point.wav')
+            #playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Point.wav')
             intUserPointsJhei = intUserPointsJhei + 1
         elif strUserPickJhei == "Rock":
             print("Your rock got covered by a measly piece of paper...\nYou lost")
-            playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Wrong.wav')
+            #playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Wrong.wav')
             intAiPointsJhei = intAiPointsJhei + 1
         #code for Scissors
     if strAiPickJhei == "Scissors":
         if strUserPickJhei == "Rock":
             print("You obliterated his scissors!\nYou won!")
-            playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Point.wav')
+            #playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Point.wav')
             intUserPointsJhei = intUserPointsJhei + 1
         elif strUserPickJhei == "Paper":
             print("Your paper got cut in half...\nYou lost")
-            playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Wrong.wav')
+            #playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Wrong.wav')
             intAiPointsJhei = intAiPointsJhei + 1
     time.sleep(1)
     print("\nYour score is: ", intUserPointsJhei, "\nThe AI score is: ", intAiPointsJhei, "\n")
@@ -71,30 +71,30 @@ def defWinLossDifficultyJhei(strAiPickJhei, listComparingValsJhei):
     if "w" in strAiPickJhei:
         if strUserPickJhei == "Rock":
             print("You obliterated his scissors!\nYou won!")
-            playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Point.wav')
+            #playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Point.wav')
             intUserPointsJhei = intUserPointsJhei + 1
         elif strUserPickJhei == "Paper":
             print("You covered his rock using paper!\nYou won!")
-            playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Point.wav')
+            #playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Point.wav')
             intUserPointsJhei = intUserPointsJhei + 1
         else:
             print("You've cut his paper right in half!\nYou won!")
-            playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Point.wav')
+            #playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Point.wav')
             intUserPointsJhei = intUserPointsJhei + 1
     elif "t" in strAiPickJhei:
         print("You both played", strUserPickJhei, "it's a tie!")
     else:
         if strUserPickJhei == "Rock":
             print("Your rock got covered by a measly piece of paper...\nYou lost")
-            playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Wrong.wav')
+            #playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Wrong.wav')
             intAiPointsJhei = intAiPointsJhei + 1
         elif strUserPickJhei == "Paper":
             print("Your paper got cut in half...\nYou lost")
-            playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Wrong.wav')
+            #playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Wrong.wav')
             intAiPointsJhei = intAiPointsJhei + 1
         else:
             print("Your scissors got destroyed with a rock...\nYou lost")
-            playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Wrong.wav')
+            #playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/Wrong.wav')
             intAiPointsJhei = intAiPointsJhei + 1
 
     time.sleep(1)
