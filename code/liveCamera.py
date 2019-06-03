@@ -1,17 +1,15 @@
 import numpy as np
-from playsound import playsound
 import cv2
 
 def defLiveOverlayAkha(intUserPointsJhei, intAiPointsJhei, strWinLossTextJhei):
 
     strCounterPlayerAkha = str(intUserPointsJhei)               #this will convert the points of the user to a string for later diplay
     strCounterAIAkha = str(intAiPointsJhei)                     #converts ai points for later display
-    intSoundCounterTkes = 0
 
-    videoCapAkha = cv2.VideoCapture(0)                          #so it knows to use either an internal or an external camera
+    videoCapAkha = cv2.VideoCapture(1)                          #so it knows to use either an internal or an external camera
 
     while(True):
-        ret, frameRPSAkha = videoCapAkha.read(1)                 #captures the footage
+        _, frameRPSAkha = videoCapAkha.read(1)                 #captures the footage
 
         flipImgAkha = cv2.flip(frameRPSAkha,1)
         
@@ -20,10 +18,6 @@ def defLiveOverlayAkha(intUserPointsJhei, intAiPointsJhei, strWinLossTextJhei):
         cv2.putText(flipImgAkha, strWinLossTextJhei, (10, 400), cv2.FONT_HERSHEY_DUPLEX, 1.10, (0, 0, 255))            #the text overlay
 
         cv2.imshow('Rock-Paper-Code',flipImgAkha)              #displays the video feed with the text overlay
-
-        while intSoundCounterTkes == 0:
-                playsound('C:/Users/Thijs/Documents/Git/rock-paper-code/sound/WinGame.wav')
-                intSoundCounterTkes = intSoundCounterTkes + 1
 
         if cv2.waitKey(20) & 0xFF == ord(' '):                  #when space is pressed the program knows to stop
             break
