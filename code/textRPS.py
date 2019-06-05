@@ -2,32 +2,49 @@
 import time
 from AI import defHardAIJhei, defMeduimAIJhei, defEasyAIJhei
 from liveCamera import defLiveOverlayAkha
+from cameraColor import defCameraColorJhei
 
 def defTextRpsJhei():
     intRoundAmountJhei = 0                              #round amount so you can play multiple rounds
     intUserPointsJhei = 0                               #user score to keep track of how many points are awarded
     intAiPointsJhei = 0                                 #ai score to keep track of how many points are awarded
-    strUserPickJhei = ""                                #the string that will be used to keep track of the choicen gesture
     xValidGestureJhei = False                           #to check if there has been given a valid gesture
     strWinLossTextJhei = ""                             #string for camera overlay
-    str_intDifficultyJhei = ""                          #string to decide difficulty
+    intDifficultyJhei = ""                          #string to decide difficulty
+    strUserPickJhei = ""                                #the string that will be used to keep track of the choicen gesture
     xDifficultySelectJhei = False                       #to keep asking difficulty when not defined
+    intRedJhei = 0
+    intBlueJhei = 0
+    intGreenJhei = 0
+    strGesCheckJhei = ""
 
     #introduction of the program
     print("Rock Paper Code", "This project was made by Jari van der Heijden, Thijs van Kessel and Amin Khachiche", "We made this project so we can play rock paper scissors with a camera", sep="\n")
     
-    str_intDifficultyJhei = input("Do you want to play easy, medium or hard mode?\n")
-    
     while xDifficultySelectJhei == False:
-        if "ea" in str_intDifficultyJhei.lower():
-            str_intDifficultyJhei = 1
-            xDifficultySelectJhei = True
-        elif "me" in str_intDifficultyJhei.lower():
-            str_intDifficultyJhei = 2
-            xDifficultySelectJhei = True
-        elif "ha" in str_intDifficultyJhei.lower():
-            str_intDifficultyJhei = 3
-            xDifficultySelectJhei = True
+
+        print("Please select a difficulty")
+
+        listCameraJhei = [intRedJhei, intBlueJhei, intGreenJhei]
+        defCameraColorJhei(listCameraJhei)
+        intRedJhei = listCameraJhei[0]
+        intGreenJhei = listCameraJhei[1]
+        intBlueJhei = listCameraJhei[2]
+        if intGreenJhei > intRedJhei and intGreenJhei > intBlueJhei:
+            intDifficultyJhei = 1
+        elif intBlueJhei > intRedJhei and intGreenJhei < intBlueJhei:
+            intDifficultyJhei = 2
+        else:
+            intDifficultyJhei = 3
+
+        if intDifficultyJhei == 1:
+            print("You selecteded easy difficulty")
+        elif intDifficultyJhei == 2:
+            print("You selected meduim difficulty")
+        else:
+            print("You selected hard difficulty")
+        xDifficultySelectJhei = True
+        
 
     while intRoundAmountJhei <= 0:          #while the number of wins is 0 or lower it will repeat to ask
         try:
@@ -40,30 +57,35 @@ def defTextRpsJhei():
 
     while intRoundAmountJhei > intUserPointsJhei and intRoundAmountJhei > intAiPointsJhei:  #this will make sure the rock paper scissors keeps repeating for the amount of rounds selected
         while xValidGestureJhei == False:                                                   #checks if there is valid input for comparing else repeat
-            strUserPickJhei = input("Pick: Rock, paper or scissors?\n")                     #this input will be used for picking a gesture
-            #this is a spell check if the input is close to valid and then turns it into something we can surrely use
-            if "ro" in strUserPickJhei.lower():
-                strUserPickJhei = "Rock"
-                xValidGestureJhei = True
-            elif "pa" in strUserPickJhei.lower():
+            
+            listCameraJhei = [intRedJhei, intBlueJhei, intGreenJhei]
+            defCameraColorJhei(listCameraJhei)
+            intRedJhei = listCameraJhei[0]
+            intGreenJhei = listCameraJhei[1]
+            intBlueJhei = listCameraJhei[2]
+            
+            if intRedJhei > intBlueJhei and intRedJhei > intGreenJhei:
                 strUserPickJhei = "Paper"
-                xValidGestureJhei = True
-            elif "sc" in strUserPickJhei.lower():
+            elif intBlueJhei > intRedJhei and intBlueJhei > intGreenJhei:
                 strUserPickJhei = "Scissors"
-                xValidGestureJhei = True
+            else:
+                strUserPickJhei = "Rock"
 
+            print("You picked:", strUserPickJhei)
+            strGesCheckJhei = input("Is this correct?\n")
+            if "y" in strGesCheckJhei.lower():
+                xValidGestureJhei = True
         
         listComparingValsJhei = [strUserPickJhei, intAiPointsJhei, intUserPointsJhei]
         #a small delay just so everything is just a bit easier to keep track off
         time.sleep(0.3)
 
-        if str_intDifficultyJhei == 1:
+        if intDifficultyJhei == 1:
             defEasyAIJhei(listComparingValsJhei)
-        elif str_intDifficultyJhei == 2:
+        elif intDifficultyJhei == 2:
             defMeduimAIJhei(listComparingValsJhei)
         else:
             defHardAIJhei(listComparingValsJhei)
-
         xValidGestureJhei = False
 
         strUserPickJhei = listComparingValsJhei[0]
