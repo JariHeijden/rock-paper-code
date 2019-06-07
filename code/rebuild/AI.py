@@ -13,7 +13,6 @@ def defMeduimAIJhei(listComparingValsJhei):
     strUserPickJhei = listComparingValsJhei[0]
     intAiPointsJhei = listComparingValsJhei[1]
     intUserPointsJhei = listComparingValsJhei[2]
-    strWinlossJhei = listComparingValsJhei[3]
     strAiPickJhei = random.choice(tupleRPSJhei)        #this is the gesture used by the "AI"
 
     if strAiPickJhei == strUserPickJhei:
@@ -34,22 +33,21 @@ def defMeduimAIJhei(listComparingValsJhei):
             strWinlossJhei = "Paper. You Won!"
         elif strUserPickJhei == "Rock":
             intAiPointsJhei = intAiPointsJhei + 1
-            strWinlossJhei = "Rock. You lost!"
+            strWinlossJhei = "Paper. You lost!"
+            
         #code for Scissors
-
     if strAiPickJhei == "Scissors":
         if strUserPickJhei == "Rock":
             intUserPointsJhei = intUserPointsJhei + 1
             strWinlossJhei = "Scissors. You Won!"
         elif strUserPickJhei == "Paper":
             intAiPointsJhei = intAiPointsJhei + 1
-            strWinlossJhei = "Paper. You lost!"
+            strWinlossJhei = "Scissors. You lost!"
 
     listComparingValsJhei[0] = strUserPickJhei
     listComparingValsJhei[1] = intAiPointsJhei
     listComparingValsJhei[2] = intUserPointsJhei
     listComparingValsJhei[3] = strWinlossJhei
-    #stops here
 
 def defHardAIJhei(listComparingValsJhei):
     strAiPickJhei = str(random.choices(listWinTieLostTkes, listHardDifficultyTkes))
@@ -62,12 +60,24 @@ def defWinLossDifficultyJhei(strAiPickJhei, listComparingValsJhei):
 
     if "w" in strAiPickJhei:
         intUserPointsJhei = intUserPointsJhei + 1
-        strWinlossJhei = "You Won!"
+        if strUserPickJhei == "Rock":
+            strWinlossJhei = "Scissors. You won!"
+        elif strUserPickJhei == "Paper":
+            strWinlossJhei = "Rock. You won!"
+        else:
+            strWinlossJhei = "Paper. You won!"
+
     elif "t" in strAiPickJhei:
         strWinlossJhei = "It's a tie!"
     else:
         intAiPointsJhei = intAiPointsJhei + 1
         strWinlossJhei = "You lost!"
+        if strUserPickJhei == "Rock":
+            strWinlossJhei = "Paper. You lost!"
+        elif strUserPickJhei == "Paper":
+            strWinlossJhei = "Scissors. You lost!"
+        else:
+            strWinlossJhei = "Rock. You lost!"
 
     listComparingValsJhei[0] = strUserPickJhei
     listComparingValsJhei[1] = intAiPointsJhei
