@@ -25,7 +25,7 @@ def defMeduimAIJhei(listComparingValsJhei):
             strWinlossJhei = "Rock. You Won!"
         elif strUserPickJhei == "Scissors":
             intAiPointsJhei = intAiPointsJhei + 1
-            strWinlossJhei = "Scissors. You lost!"
+            strWinlossJhei = "Rock. You lost!"
 
         #code for Paper
     if strAiPickJhei == "Paper":
