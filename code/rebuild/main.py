@@ -43,16 +43,20 @@ while(True):
     maskGreen = cv2.inRange(hsv, lower_green, upper_green)  #makes HSV pixels between the selected arrays true(white) and the other false(black)
     maskBlue = cv2.inRange(hsv, lower_blue, upper_blue)     #makes HSV pixels between the selected arrays true(white) and the other false(black)
 
-    cv2.putText(flipImg, strTextMainTop, (5, 30), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 0, 255))                  #the text overlay
-    cv2.putText(flipImg, strTextMainBot, (5, 450), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 0, 255))                 #the text overlay
+    cv2.line(flipImg, (0, 30), (750, 30), (0, 0, 0), 60)
+    cv2.line(flipImg, (0, 450), (750, 450), (0, 0, 0), 60)
 
-    cv2.putText(flipImg, strCounterPlayer, (50, 110), cv2.FONT_HERSHEY_DUPLEX, 2, (0, 0, 255))             #the text overlay
-    cv2.putText(flipImg, strCounterAI, (525, 110), cv2.FONT_HERSHEY_DUPLEX, 2, (0, 0, 255))                #the text overlay
+    cv2.putText(flipImg, strTextMainTop, (50, 40), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255))                  #the text overlay
+    cv2.putText(flipImg, strTextMainBot, (50, 460), cv2.FONT_HERSHEY_DUPLEX, 1, (255, 255, 255))                 #the text overlay
+
+    cv2.putText(flipImg, strCounterPlayer, (50, 50), cv2.FONT_HERSHEY_DUPLEX, 2, (255, 255, 255))             #the text overlay
+    cv2.putText(flipImg, strCounterAI, (525, 50), cv2.FONT_HERSHEY_DUPLEX, 2, (255, 255, 255))                #the text overlay
 
     cv2.imshow("Rock-paper-code",flipImg)              #displays the video feed
 
     if xDifficulty == False:                            #makes sure the first thing that happens is a difficulty select
-        strTextMainBot = "Please select difficulty"
+        strTextMainBot = "Please select a difficulty"
+        strTextMainTop = "press 'spacebar' to select"
         if cv2.waitKey(20) & 0xFF == ord(" "):          #if "SpaceBar" is pressed get the following values
             intRedCount = cv2.countNonZero(maskRed)             #counts the true Red pixels
             intGreenCount = cv2.countNonZero(maskGreen)         #counts the true Green pixels
@@ -75,6 +79,7 @@ while(True):
                 intRedCount = cv2.countNonZero(maskRed)             #counts the true Red pixels
                 intGreenCount = cv2.countNonZero(maskGreen)         #counts the true Green pixels
                 intBlueCount = cv2.countNonZero(maskBlue)           #counts the true Blue pixels
+                
 
                 if intGreenCount > intRedCount and intGreenCount > intBlueCount:    #if the most green
                     intRoundAmount = 1
@@ -93,11 +98,13 @@ while(True):
                     xRoundAmount = True
         
     if intRoundAmount > intUserPoints and intRoundAmount > intAIPoints:             #if there is still more rounds then points left
-        strTextMainTop = ""
+        strTextMainTop = "Rock, paper, scissors?"
+
         if cv2.waitKey(20) & 0xFF == ord(" "):
             intRedCount = cv2.countNonZero(maskRed)
             intGreenCount = cv2.countNonZero(maskGreen)
             intBlueCount = cv2.countNonZero(maskBlue)
+            strTextMainTop = ""
 
             if intRedCount > intBlueCount and intRedCount > intGreenCount:
                 strPlayerPick = "Paper"
@@ -136,13 +143,11 @@ while(True):
 #this is to see if the user won
     if intRoundAmount == intUserPoints:
         strTextMainBot = "You won the game!"
-        strTextMainTop = strTextMainBot
         if cv2.waitKey(20) & 0xFF == ord(" "):
             break
 #this is to see if the AI won
     if intRoundAmount == intAIPoints:
         strTextMainBot = "You lost the game..."
-        strTextMainTop = strTextMainBot
         if cv2.waitKey(20) & 0xFF == ord(" "):
             break
     
