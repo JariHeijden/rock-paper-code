@@ -20,7 +20,7 @@ listComparingVals = [strPlayerPick, intAIPoints, intUserPoints, strWinLoss]
 strCounterPlayer = ""
 strCounterAI = ""
 
-videoCap = cv2.VideoCapture(1)              #makes sure the right camera is selected
+videoCap = cv2.VideoCapture(0)              #makes sure the right camera is selected
 
 #arrays to later select between different HSV values
 lower_red = np.array([0, 180, 160])
